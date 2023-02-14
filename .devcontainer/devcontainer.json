@@ -1,0 +1,17 @@
+{
+	"name": "dev rust web",
+	"dockerComposeFile": [
+		"docker-compose.yml"
+	],
+	"service": "app",
+	"workspaceFolder": "/workspaces",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"rust-lang.rust-analyzer",
+				"streetsidesoftware.code-spell-checker",
+				"ms-azuretools.vscode-docker"
+			]
+		}
+	}
+}

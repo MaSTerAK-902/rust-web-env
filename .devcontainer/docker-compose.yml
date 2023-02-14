@@ -1,0 +1,30 @@
+version: '3.8'
+
+volumes:
+  rust-mariadb:
+
+services:
+  app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    volumes:
+      - ../rust-app:/workspaces:cached
+    command: sleep infinity
+    network_mode: service:db
+  
+  db:
+    image: mariadb:10.3.32-focal
+    restart: unless-stopped
+    volumes:
+      - rust-mariadb:/var/lib/mysql
+    env_file:
+      - .env
+  
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
